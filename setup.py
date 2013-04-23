@@ -8,3 +8,4 @@ setup(name='Andrey',
       url='http://www.python.org/sigs/distutils-sig/',
       install_requires=['Django<=1.4','MySQL-python'],
      )
+     
