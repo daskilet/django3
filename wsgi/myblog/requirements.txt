@@ -1,4 +1,4 @@
-ClientForm==0.2.10
+ClientForm==0.2.10 
 Django==1.5
 FFTPACK==3.1
 GitPython==0.3.2.RC1
