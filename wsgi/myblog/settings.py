@@ -26,12 +26,12 @@ STATIC_URL = '/static/'
 if ON_OPENSHIFT:
    DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'daskilet_adminn',                      # Or path to database file if using sqlite3.
-        'USER': 'daskilet_adminn',                      # Not used with sqlite3.
-        'PASSWORD': 'daskilet463804',                  # Not used with sqlite3.
-        'HOST': os.environ['OPENSHIFT_DB_HOST'],                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': os.environ['OPENSHIFT_DB_PORT'],                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'daskilet_adminn',                      
+        'USER': 'daskilet_adminn',                      
+        'PASSWORD': 'daskilet463804',                  
+        'HOST': os.environ['OPENSHIFT_DB_HOST'],                      
+        'PORT': os.environ['OPENSHIFT_DB_PORT'],                      
     }
 }
 else:
