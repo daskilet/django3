@@ -7,5 +7,4 @@ setup(name='Andrey',
       author_email='daskilet@mail.ru',
       url='http://www.python.org/sigs/distutils-sig/',
       install_requires=['Django<=1.4','MySQL-python','South','gitrevision','whoosh','haystack','argparse',],
-
      )
