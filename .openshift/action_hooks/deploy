@@ -10,3 +10,4 @@ export PYTHON_EGG_CACHE=$OPENSHIFT_GEAR_DIR/$cartridge_type/virtenv/lib/python-2
 cd "$OPENSHIFT_REPO_DIR"'wsgi/myblog/'
 
 python manage.py syncdb --noinput
+
