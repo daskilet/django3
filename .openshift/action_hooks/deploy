@@ -6,4 +6,4 @@
 #Activate VirtualEnv in order to use the correct libraries
 source "$OPENSHIFT_HOMEDIR"'python-2.6/virtenv/bin/activate'
 cd "$OPENSHIFT_REPO_DIR"'wsgi/myblog/'
-python manage.py convert_to_south blog
+python manage.py migrate 0001 --fake
