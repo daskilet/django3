@@ -1,0 +1,16 @@
+{% include 'blog/logo.html' %}
+{% include 'blog/header.html' %}
+<strong>User's {{user.username}} profile</strong>
+<div class="post">
+<img src="/media/{{ user.get_profile.avatar }}"  height="100" width="100" />
+     <h4>Full name: {{ user.first_name }}</h4>
+     <h4>BirthPlace: {{ user.get_profile.birthplace }}</h4>
+     <h4>Icq: {{ user.get_profile.icq }}</h4>
+     <h4>A bit about myself: {{ user.get_profile.biography }}</h4>
+     <h4>My site: {{ user.get_profile.url }}</h4>
+     <h4>Joined this site: {{ user.date_joined }}</h4>
+     <h4>Last_login: {{ user.last_login }}</h4>
+     <h4>E-mail : {{ user.email }} </h4>
+     <a href="http://{{ site }}/{{user.username}}_posts" style="margin-left:190px;">{{user.username}}s other posts</a>
+</div>
+{% include 'blog/footer.html' %}
