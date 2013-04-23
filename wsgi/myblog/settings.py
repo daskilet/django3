@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
-    'gitrevision',
     'south',
 )
 LOGGING = {
