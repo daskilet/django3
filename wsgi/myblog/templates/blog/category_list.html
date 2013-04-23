@@ -1,0 +1,8 @@
+{% include 'blog/logo.html' %}
+{% include 'blog/header.html' %}
+{% include 'blog/poisk.html' %}
+        {% for category in categories %}
+            <h3>{{ category.title }}</h3>
+            <p>{{ category.description }}</p>
+        {% endfor %}
+{% include 'blog/footer.html' %}
