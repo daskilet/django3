@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 # Django settings for myblog project.
 import os
+import sys
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
@@ -18,7 +19,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-HAYSTACK_SITECONF = 'myblog.search_sites'
+HAYSTACK_SITECONF = 'wsgi.myblog.search_sites'
+SKIP_COMMANDS = ['test']
+if any([command in sys.argv for command in SKIP_COMMANDS]):
+    HAYSTACK_ENABLE_REGISTRATIONS = False
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'index')
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
