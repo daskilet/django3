@@ -9,4 +9,4 @@ cd $OPENSHIFT_HOMEDIR/$cartridge_type/virtenv/bin
 source ./activate
 python "$OPENSHIFT_REPO_DIR"wsgi/myblog/manage.py syncdb --noinput
 
- 
+  
