@@ -19,7 +19,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-HAYSTACK_SITECONF = 'wsgi.myblog.search_sites'
+HAYSTACK_SITECONF = 'myblog.search_sites'
 SKIP_COMMANDS = ['test']
 if any([command in sys.argv for command in SKIP_COMMANDS]):
     HAYSTACK_ENABLE_REGISTRATIONS = False
