@@ -133,12 +133,12 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'haystack',
-    'blog',
     'django.contrib.comments',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
+    'haystack',
     'south',
+    'blog',
 )
 LOGGING = {
     'version': 1,
