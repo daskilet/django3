@@ -1,13 +1,10 @@
 #!/usr/bin/python
 import os
-<<<<<<< HEAD
  
-=======
 import sys
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'myblog.settings'
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'myblog'))
->>>>>>> master
 virtenv = os.environ['APPDIR'] + '/virtenv/'
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.6/site-packages')
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
@@ -195,11 +192,9 @@ def application(environ, start_response):
 	start_response(status, response_headers)
 	return [response_body]
 
-=======
 import django.core.handlers.wsgi
 
 application = django.core.handlers.wsgi.WSGIHandler()
->>>>>>> master
 #
 # Below for testing only
 #
