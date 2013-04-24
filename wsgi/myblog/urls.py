@@ -5,11 +5,8 @@ from myblog.blog.views import *
 from django.contrib import admin
 from blog.models import Category
 from django.conf import settings
-admin.autodiscover()
-
-SKIP_COMMANDS = ['syncdb', 'migrate', 'schemamigration', 'datamigration']
-if any([command in sys.argv for command in SKIP_COMMANDS]):
-    HAYSTACK_ENABLE_REGISTRATIONS = False
+import haystack
+haystack.autodiscover() 
 urlpatterns = patterns('',
     # Example:
      (r'^category_list/?$',category_list),
