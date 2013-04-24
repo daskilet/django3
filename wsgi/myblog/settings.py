@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
+    'south',
 )
 LOGGING = {
     'version': 1,
