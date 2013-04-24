@@ -58,12 +58,12 @@ def archive():
 def category_list(request):
   ssil=Dlya_saita(request)
   categories=Category.objects.all()
-  return render_to_response('category_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
+  return render_to_response('./category_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
   "categories":categories,'site': ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def poll_list(request):
   ssil=Dlya_saita(request)
   polls = Poll.objects.all()
-  return render_to_response('poll_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
+  return render_to_response('./poll_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
   "polls":polls,'site': ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def getPosts(request,selected_page=1,auth=None,monthSlug=None):
     # Get all blog posts
@@ -82,12 +82,12 @@ def getPosts(request,selected_page=1,auth=None,monthSlug=None):
     except EmptyPage:
        returned_page = pages.page(pages.num_pages)
     # Display all the posts
-    return render_to_response('posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
+    return render_to_response('./posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
                               'page':returned_page,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
 def getPost(request,postSlug):
   ssil = Dlya_saita(request)
   post = Post.objects.filter(slug=postSlug)
-  return render_to_response('single.html',dict({ 'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':post,'site': ssil.ssilka},\
+  return render_to_response('./single.html',dict({ 'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':post,'site': ssil.ssilka},\
                             **recent_polls(request)),context_instance = ssil.context)
 def getChoices(request,pollSlug):
   ssil = Dlya_saita(request)
@@ -96,7 +96,7 @@ def getChoices(request,pollSlug):
   mas=[(element.choice,element.votes) for element in choices]
   mas.append(choices[0].poll.question)
   choices_json = json.dumps(mas)
-  return render_to_response('choices_for_poll.html',{'spisok_categ':categories_spisok(),'site':ssil.ssilka,'spisok_publ':archive(),'spisok_publ':archive(),'choices':choices,\
+  return render_to_response('./choices_for_poll.html',{'spisok_categ':categories_spisok(),'site':ssil.ssilka,'spisok_publ':archive(),'spisok_publ':archive(),'choices':choices,\
                            'choices_json':choices_json},context_instance=ssil.context)  
 def getCategory(request,categorySlug,selected_page=1):
   ssil = Dlya_saita(request)
@@ -118,7 +118,7 @@ def getCategory(request,categorySlug,selected_page=1):
     returned_page = pages.page(selected_page)
   except EmptyPage:
     returned_page = pages.page(pages.num_pages)
-  return render_to_response('posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),"posts":returned_page.object_list,\
+  return render_to_response('./posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),"posts":returned_page.object_list,\
   "page":returned_page,"category":category,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
 class PostsFeed(Feed):
     title = "My Django Blog posts"
@@ -135,13 +135,13 @@ class PostsFeed(Feed):
         return item.body
 def getInfo(request):
   ssil = Dlya_saita(request)
-  return render_to_response('info.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  return render_to_response('./info.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def getThanks(request):
   ssil = Dlya_saita(request)
-  return render_to_response('thanks.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  return render_to_response('./thanks.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def getProfile(request,postSlug):
   ssil = Dlya_saita(request)
-  return render_to_response('profile.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'user':Post.objects.get(slug=postSlug).author,\
+  return render_to_response('./profile.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'user':Post.objects.get(slug=postSlug).author,\
                            'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def search(request):
   ssil = Dlya_saita(request)
@@ -156,7 +156,7 @@ def search(request):
 	for r in results:
 		posts.append(r.object)
 	#videos list contains all the videos those match the search criteria
-	return render_to_response('poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
+	return render_to_response('./poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
 def recent_polls(request):
     latest_poll_list = Poll.objects.all()[0]
@@ -170,7 +170,7 @@ def vote(request,pollSlug):
            selected_choice = p.choice_set.get(pk=request.POST['choice'])
        except (KeyError, Choice.DoesNotExist):
         # Redisplay the poll voting form.
-           return render_to_response('poll_detail.html', {
+           return render_to_response('./poll_detail.html', {
                'object': p,
                'error_message': "You didn't select a choice.",
            }, context_instance=RequestContext(request))

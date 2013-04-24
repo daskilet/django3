@@ -119,7 +119,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 ROOT_URLCONF = 'myblog.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR,'templates/'),
+    os.path.join(PROJECT_DIR,'templates'),
 )
 print TEMPLATE_DIRS[0]   
 INSTALLED_APPS = (
