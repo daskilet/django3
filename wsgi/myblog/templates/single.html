@@ -1,5 +1,5 @@
-{% include 'blog/logo.html' %}
-{% include 'blog/header.html' %}
+{% include 'logo.html' %}
+{% include 'header.html' %}
         {% load comments %}
         {% for post in posts %}
         <div class="post">
@@ -26,4 +26,4 @@
         {% if page.has_next %}
         <a href="/{{ page.next_page_number }}/">Next Page</a>
         {% endif %}
-{% include 'blog/footer.html' %}
+{% include 'footer.html' %}

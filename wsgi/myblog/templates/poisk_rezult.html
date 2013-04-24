@@ -1,6 +1,6 @@
-{% include 'blog/logo.html' %}
-{% include 'blog/header.html' %}
-{% include 'blog/poisk.html' %}
+{% include 'logo.html' %}
+{% include 'header.html' %}
+{% include 'poisk.html' %}
     {% load comments %}
     {% for post in text %}
         <div class="post">
@@ -10,4 +10,4 @@
         <h3>Comments: {{ comment_count }}</h3>
         </div>
     {% endfor %}
-{% include 'blog/footer.html' %}
+{% include 'footer.html' %}

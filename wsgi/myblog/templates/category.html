@@ -1,6 +1,6 @@
-{% include 'blog/logo.html' %}
-{% include 'blog/header.html' %}
-{% include 'blog/poisk.html' %}
+{% include 'logo.html' %}
+{% include 'header.html' %}
+{% include 'poisk.html' %}
         {% load comments %}
         <h1>Posts for {{ category.title }}</h1>
         {% if posts %}
@@ -24,4 +24,4 @@
         <p>No posts matched</p>
         </div>
         {% endif %}
-{% include 'blog/footer.html' %}
+{% include 'footer.html' %}
