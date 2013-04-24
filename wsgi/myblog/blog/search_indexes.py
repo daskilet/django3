@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 from haystack import indexes
 from haystack import site
-from blog.models import Post
+from models import Post
 import datetime
 class PostIndex(indexes.RealTimeSearchIndex):
     text = indexes.CharField(use_template=True, document=True)
