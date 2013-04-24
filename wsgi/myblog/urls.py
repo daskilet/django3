@@ -7,6 +7,9 @@ from blog.models import Category
 from django.conf import settings
 admin.autodiscover()
 
+SKIP_COMMANDS = ['syncdb', 'migrate', 'schemamigration', 'datamigration']
+if any([command in sys.argv for command in SKIP_COMMANDS]):
+    HAYSTACK_ENABLE_REGISTRATIONS = False
 urlpatterns = patterns('',
     # Example:
      (r'^category_list/?$',category_list),

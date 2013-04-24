@@ -133,7 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
-    'django-haystack',
+    'haystack',
     'south',
 )
 LOGGING = {
