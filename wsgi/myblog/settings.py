@@ -18,7 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-HAYSTACK_SITECONF = PROJECT_DIR+ 'search_sites.py'
+HAYSTACK_SITECONF = '../search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'index')
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
