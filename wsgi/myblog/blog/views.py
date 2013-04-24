@@ -13,6 +13,7 @@ from haystack.query import SearchQuerySet
 from django.core.urlresolvers import reverse
 import simplejson as json
 import datetime
+import os
 class Dlya_saita(object):
   def __init__(self,request):
     self.ssilka = request.get_host()
