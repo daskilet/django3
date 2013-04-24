@@ -114,12 +114,20 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 
 ROOT_URLCONF = 'myblog.urls'
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, 'templates'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+if not ON_OPENSHIFT:
+
+   TEMPLATE_DIRS = (
+       os.path.join(PROJECT_DIR, 'templates'),
+       # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+       # Always use forward slashes, even on Windows.
+       # Don't forget to use absolute paths, not relative paths.
+   )
+else:
+  TEMPLATE_DIRS = (os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'media'),
+       # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+       # Always use forward slashes, even on Windows.
+       # Don't forget to use absolute paths, not relative paths.
+   )
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
