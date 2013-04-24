@@ -16,6 +16,7 @@ import datetime
 class Dlya_saita(object):
   def __init__(self,request):
     self.ssilka = request.get_host()
+    print self.ssilka
     self.context =  RequestContext(request)
 def categories_spisok():
   spisok_categ = [element for element in Category.objects.all()]
