@@ -1,9 +1,0 @@
-{% include 'blog/logo.html' %}
-{% include 'blog/header.html' %}
- {% for poll in polls %}
-         <div class="post"><ul>
-         <li><a href="poll_list/{{ poll.get_absolute_url }}">{{ poll.question }}</li>
-         </ul>
-         </div>
-        {% endfor %}
-{% include 'blog/footer.html' %}
