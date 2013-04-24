@@ -118,8 +118,12 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 
 ROOT_URLCONF = 'myblog.urls'
 
+ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR,'templates'),
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    ROOTDIR + '/templates',
 )
 print TEMPLATE_DIRS[0]   
 INSTALLED_APPS = (
