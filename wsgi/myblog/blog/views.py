@@ -160,7 +160,10 @@ def search(request):
 	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
 def recent_polls(request):
-    latest_poll_list = Poll.objects.all()[0]
+    try:
+       latest_poll_list = Poll.objects.all()[0]
+    except IndexError:
+      latest_poll_list='No any polls here'
     choices = Choice.objects.filter(poll=latest_poll_list)
     return  {'spisok_categ':categories_spisok(),'spisok_publ':archive(),'latest_poll_list':latest_poll_list,'choices':choices}
 def vote(request,pollSlug):
