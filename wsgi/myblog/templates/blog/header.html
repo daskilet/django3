@@ -48,7 +48,8 @@
                 {% get_flatpages as flatpages %}
                 {% for flatpage in flatpages %}
                 <li><a href="{{ flatpage.url }}">{{ flatpage.title }}</a></li>
-                <li><a href="http://{{ site }}/thanks">Thanks</a></li>
                 {% endfor %}
+                <li><a href="http://{{ site }}/thanks">Thanks</a></li>
+                
             </ul>
             
