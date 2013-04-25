@@ -11,7 +11,6 @@ if ON_OPENSHIFT:
     DEBUG = False
 else:
     DEBUG = True
-DEBUG=True
 TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
