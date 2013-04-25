@@ -163,7 +163,7 @@ def recent_polls(request):
     try:
        latest_poll_list = Poll.objects.all()[0]
     except IndexError:
-      latest_poll_list='No any polls here'
+      latest_poll_list=''
     choices = Choice.objects.filter(poll=latest_poll_list)
     return  {'spisok_categ':categories_spisok(),'spisok_publ':archive(),'latest_poll_list':latest_poll_list,'choices':choices}
 def vote(request,pollSlug):
