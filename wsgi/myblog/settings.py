@@ -142,7 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'haystack',
     'south',
-    'blog',
+    'myblog.blog',
 )
 LOGGING = {
     'version': 1,
