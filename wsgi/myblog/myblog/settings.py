@@ -20,7 +20,7 @@ ADMINS = (
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
-HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SITECONF = 'myblog.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'index')
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
@@ -139,7 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'haystack',
     'south',
-    'blog',
+    'myblog.blog',
 )
 LOGGING = {
     'version': 1,
