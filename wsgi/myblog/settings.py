@@ -21,9 +21,6 @@ MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
 HAYSTACK_SITECONF = 'search_sites'
-SKIP_COMMANDS = ['test']
-if any([command in sys.argv for command in SKIP_COMMANDS]):
-    HAYSTACK_ENABLE_REGISTRATIONS = False
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'index')
 AUTH_PROFILE_MODULE = 'blog.UserProfile'

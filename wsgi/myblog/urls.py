@@ -1,9 +1,9 @@
 # -*- coding: utf8 -*-
 from django.conf.urls import *
-from blog.views import *
+from myblog.blog.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from blog.models import Category
+from myblog.blog.models import Category
 from django.conf import settings
 import haystack
 haystack.autodiscover() 
