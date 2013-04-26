@@ -18,6 +18,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+ALLOWED_HOSTS = ['*']
 
 HAYSTACK_SITECONF = 'myblog.search_sites'
 SKIP_COMMANDS = ['test']
