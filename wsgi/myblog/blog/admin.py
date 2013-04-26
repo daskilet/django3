@@ -1,9 +1,9 @@
 # -*- coding: utf8 -*-
 from django.contrib import admin
 from django.contrib.auth.models import User
-from blog.models import *
-from blog.models import UserProfile
-from blog.models import Poll, Choice
+from myblog.blog.models import *
+from myblog.blog.models import UserProfile
+from myblog.blog.models import Poll, Choice
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
