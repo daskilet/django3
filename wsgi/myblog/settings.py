@@ -20,7 +20,7 @@ ADMINS = (
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
-HAYSTACK_SITECONF = 'myblog.search_sites'
+HAYSTACK_SITECONF = 'search_sites'
 SKIP_COMMANDS = ['test']
 if any([command in sys.argv for command in SKIP_COMMANDS]):
     HAYSTACK_ENABLE_REGISTRATIONS = False
@@ -142,7 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'haystack',
     'south',
-    'myblog.blog',
+    'blog',
 )
 LOGGING = {
     'version': 1,
