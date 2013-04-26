@@ -2,7 +2,7 @@
 import os
 import sys
  
-os.environ['DJANGO_SETTINGS_MODULE'] = 'myblog.myblog.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'myblog.settings'
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'myblog'))
 virtenv = os.environ['APPDIR'] + '/virtenv/'
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.6/site-packages')
