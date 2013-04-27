@@ -6,6 +6,7 @@ from django.contrib import admin
 from myblog.blog.models import Category
 from django.conf import settings
 import haystack
+admin.autodiscover()
 haystack.autodiscover() 
 urlpatterns = patterns('',
     # Example:
