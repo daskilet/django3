@@ -123,7 +123,6 @@ TEMPLATE_DIRS = (
     ROOTDIR + '/templates/',
 )
 AUTHENTICATION_BACKENDS = (
-    'auth.authentication.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )   
 INSTALLED_APPS = (
