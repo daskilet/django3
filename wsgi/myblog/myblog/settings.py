@@ -18,7 +18,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-ALLOWED_HOSTS = ['www.sprimitiveblog-daskilet.rhcloud.com']
+ALLOWED_HOSTS = ['*']
 
 HAYSTACK_SITECONF = 'myblog.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
