@@ -136,10 +136,12 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'django.contrib.comments',
+    'disqus',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
     'south',
     'myblog.blog',
 )
+DISQUS_API_KEY = 'tBcLV80hzwZ42GbCSXnE5aOne8Mu9XxMavhVLmgETQilNgvEJzjujDUPcgVAXgLs'
+DISQUS_WEBSITE_SHORTNAME = 'daskiletblog'

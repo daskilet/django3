@@ -1,6 +1,6 @@
 {% include 'blog/logo.html' %}
 {% include 'blog/header.html' %}
-        {% load comments %}
+        {% load disqus_tags %}
         {% for post in posts %}
         <div class="post">
         <h1>{{ post.title }}</a></h1>
@@ -8,7 +8,7 @@
         {{ post.body|safe }}
         <h3>By <a href="http://{{ site }}/{{ post.get_absolute_url }}profile">{{ post.author }}</a></h3>
         <h3><a href="http://{{ site }}/category_list">Categories:</a> {% for category in post.categories.all %} <a href=http://{{ site }}/all_of_that_category/{{ category.title }}>{{ category.title }}</a> {% endfor %}</h3>
-        {% get_comment_count for post as comment_count %}
+        {% disqus_show_comments for post as comment_count %}
         <h3>Comments: {{ comment_count }}</h3>
         <ol>
         {% get_comment_list for post as comments %}
