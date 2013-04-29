@@ -7,7 +7,7 @@
         <div class="post">
         <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
         {{ post.short_body|safe }}
-        {% disqus_show_comments for post as comment_count %}
+        {% disqus_show_comments %}
         <h3>Comments: {{ comment_count }}</h3>
         </div>
         {% endfor %}

@@ -8,8 +8,7 @@
         <div class="post">
         <h1><a href="http://{{ site }}/category.html">{{ post.title }}</a></h1>
         {{ post.body|safe }}
-        {% disqus_show_comments for post as comment_count %}
-        <h3>Comments: {{ comment_count }}</h3>
+        {% disqus_show_comments %}
         </div>
         {% endfor %}
         <br />
