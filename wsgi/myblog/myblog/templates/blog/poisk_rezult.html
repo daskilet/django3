@@ -1,13 +1,10 @@
 {% include 'blog/logo.html' %}
 {% include 'blog/header.html' %}
 {% include 'blog/poisk.html' %}
-    {% load disqus_tags %}
     {% for post in text %}
         <div class="post">
         <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
         {{ post.body|safe }}
-        {% disqus_show_comments %}
-        <h3>Comments: {{ comment_count }}</h3>
         </div>
     {% endfor %}
 {% include 'blog/footer.html' %}

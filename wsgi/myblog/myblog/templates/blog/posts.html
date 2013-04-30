@@ -7,8 +7,8 @@
         <div class="post">
         <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
         {{ post.short_body|safe }}
-        {% disqus_show_comments %}
-        <h3>Comments: {{ comment_count }}</h3>
+        <a href="{{ post.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a>
+         {% disqus_num_replies %}
         </div>
         {% endfor %}
         <br />

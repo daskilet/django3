@@ -9,14 +9,6 @@
         <h3>By <a href="http://{{ site }}/{{ post.get_absolute_url }}profile">{{ post.author }}</a></h3>
         <h3><a href="http://{{ site }}/category_list">Categories:</a> {% for category in post.categories.all %} <a href=http://{{ site }}/all_of_that_category/{{ category.title }}>{{ category.title }}</a> {% endfor %}</h3>
         {% disqus_show_comments %}
-        <h3>Comments: {{ comment_count }}</h3>
-        <ol>
-        {% get_comment_list for post as comments %}
-        {% for comment in comments %}
-        <li>{{ comment }}</li>
-        </ol>
-        {% endfor %}
-        {% render_comment_form for post %}
         {% endfor %}
         </div>
         <br />

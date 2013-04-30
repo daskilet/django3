@@ -1,14 +1,12 @@
 {% include 'blog/logo.html' %}
 {% include 'blog/header.html' %}
 {% include 'blog/poisk.html' %}
-        {% load disqus_tags %}
         <h1>Posts for {{ category.title }}</h1>
         {% if posts %}
         {% for post in posts %}
         <div class="post">
         <h1><a href="http://{{ site }}/category.html">{{ post.title }}</a></h1>
         {{ post.body|safe }}
-        {% disqus_show_comments %}
         </div>
         {% endfor %}
         <br />
