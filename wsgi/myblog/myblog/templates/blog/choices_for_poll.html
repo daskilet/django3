@@ -9,17 +9,7 @@
     <body>
       
      <div id="polls">
-           <form action="/polls/{{ latest_poll_list.slug }}/vote/" method="post">
-           {% csrf_token %}
-           {% for choice in choices %}
-              <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-              <label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br />
-           {% endfor %}
-              <input type="submit" value="Vote" style="margin-top:20px;" />
-             </form>
-          <a href="http://{{ site }}/poll_list" style="font-size:14px;">poll archive</a>
-          <br></br><br></br>
-          <h3 style="text-align:center;">Категории</h3>
+          <h3 style="text-align:center;margin-top:300px;">Категории</h3>
           {% for element in spisok_categ %}
               <p style="text-align:center;"><a href="http://{{site}}/all_of_that_category/{{element.0}}">{{ element.0 }}({{ element.1}})</a></p>
              {% endfor %}
