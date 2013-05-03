@@ -112,7 +112,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 "django.core.context_processors.static",
 "django.core.context_processors.tz",
 "django.contrib.messages.context_processors.messages",)
-
+GOOGLE_ANALYTICS_MODEL = True
 ROOT_URLCONF = 'myblog.urls'
 
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
+     'google_analytics',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'disqus',
