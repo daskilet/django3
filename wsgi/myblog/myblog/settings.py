@@ -16,7 +16,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
-
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-40628880-1'
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
