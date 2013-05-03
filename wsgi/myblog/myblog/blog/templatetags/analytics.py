@@ -31,8 +31,8 @@ class AnalyticsNode(template.Node):
 
     def render(self, context):
         content = ''
+        code_set=[]
         if self.site:
-            code_set = self.site.analytics_set.all()
             if code_set:
                 code = code_set[0].analytics_code
             else:
