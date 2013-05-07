@@ -10,10 +10,11 @@ from django.template import RequestContext
 from django.contrib.syndication.views import Feed
 from django.contrib.flatpages.models import FlatPage
 from haystack.query import SearchQuerySet
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse,resolve, Resolver404
 import simplejson as json
 import datetime
 import os
+import gdata.analytics.service
 class Dlya_saita(object):
   def __init__(self,request):
     self.ssilka = request.get_host()
@@ -188,3 +189,6 @@ def vote(request,pollSlug):
            return HttpResponseRedirect(reverse(getChoices, args=(pollSlug,)))
     else:
       return HttpResponseRedirect(reverse(getChoices,args=(pollSlug,)))
+def popular(request):
+    ssil = Dlya_saita(request)
+    client = gdata.analytics.service.AnalyticsDataService()

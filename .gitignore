@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-*.pyc
-*.pyo
-=======
-<<<<<<< HEAD
+
 # Игнорирование всех логов и временных файлов.
 /log/*.log
 /tmp
@@ -11,9 +7,7 @@
 doc/
 *.swp
 *~
-
+#/myblog/myblog/true-settings.py
 =======
 *.pyc
 *.pyo
->>>>>>> osmaster
->>>>>>> master

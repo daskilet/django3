@@ -2,6 +2,7 @@
 # Django settings for myblog project.
 import os
 import sys
+from true-settings import *
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
@@ -16,7 +17,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-40628880-1'
+GOOGLE_ANALYTICS_PROPERTY_ID = GOOGLE_ID
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
@@ -31,7 +32,7 @@ if ON_OPENSHIFT:
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'daskilet_adminn',                      
         'USER': 'daskilet_adminn',                      
-        'PASSWORD': 'daskilet463804',                  
+        'PASSWORD': database_password,                  
         'HOST': os.environ['OPENSHIFT_MYSQL_DB_HOST'],                      
         'PORT': os.environ['OPENSHIFT_MYSQL_DB_PORT'],                      
     }
@@ -146,5 +147,5 @@ INSTALLED_APPS = (
     'south',
     'myblog.blog',
 )
-DISQUS_API_KEY = 'tBcLV80hzwZ42GbCSXnE5aOne8Mu9XxMavhVLmgETQilNgvEJzjujDUPcgVAXgLs'
+DISQUS_API_KEY = DISQUS_API
 DISQUS_WEBSITE_SHORTNAME = 'daskiletblog'
