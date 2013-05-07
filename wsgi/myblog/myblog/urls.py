@@ -8,7 +8,7 @@ from django.conf import settings
 admin.autodiscover()
 import haystack 
 haystack.autodiscover()
-urlpatterns = patterns('',
+urlpatterns = patterns('', 
     # Example:
      (r'^category_list/?$',category_list),
      (r'^poll_list/?$',poll_list),
