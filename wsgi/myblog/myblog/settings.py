@@ -2,7 +2,7 @@
 # Django settings for myblog project.
 import os
 import sys
-from true_settings import *
+from true_settings import * 
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
