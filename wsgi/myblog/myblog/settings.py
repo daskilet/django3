@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 # Django settings for myblog project.
-import os
+import os 
 import sys
 from true_settings import * 
 ON_OPENSHIFT = False
