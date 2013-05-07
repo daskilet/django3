@@ -7,7 +7,7 @@
 doc/
 *.swp
 *~
-.*true_settings.py
+*true_settings.py
 =======
 *.pyc
 *.pyo
