@@ -7,6 +7,7 @@
 cartridge_type="python-2.6"
 cd $OPENSHIFT_HOMEDIR/$cartridge_type/virtenv/bin 
 source ./activate 
+cp python "$OPENSHIFT_DATA_DIR"true_settings.py "$OPENSHIFT_REPO_DIR"wsgi/myblog/myblog/true_settings.py
 python "$OPENSHIFT_REPO_DIR"wsgi/myblog/manage.py syncdb --migrate --noinput
 python "$OPENSHIFT_REPO_DIR"wsgi/myblog/manage.py collectstatic --noinput
   
