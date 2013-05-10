@@ -15,6 +15,7 @@ import simplejson as json
 import datetime
 import os
 import gdata.analytics.service
+from myblog.true_settings import *
 class Dlya_saita(object):
   def __init__(self,request):
     self.ssilka = request.get_host()
@@ -192,3 +193,20 @@ def vote(request,pollSlug):
 def popular(request):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
+    clientClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
+    now = datetime.datetime.now()
+    month=now.month
+    month_minus_one = month-1
+    if month_minus_one==0:
+      month_minus_one=12
+    if month<10:
+      month = '0'+str(month)
+    else:
+      month = str(month)
+    if month_minus_one<10:
+      month_minus_one = '0'+str(month_minus_one)
+    else:
+      month_minus_one = str(month_minus_one)
+    data = client.getData(ids=ga_profileid,dimensions="ga:pagePath",metrics="pageviews",
+    start_date="%d-%s-%d"%(now.year,month_minus_one,now.day),end_date ="%d-%s-%d"%(now.year,
+    month,now.day))  
