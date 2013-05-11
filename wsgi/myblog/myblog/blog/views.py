@@ -208,7 +208,7 @@ def popular(request, selected_page=1):
       month_minus_one = '0'+str(month_minus_one)
     else:
       month_minus_one = str(month_minus_one)
-    data = client.GetData(ids=ga_prifileid,dimensions="ga:pagePath",metrics="ga:pageviews",
+    data = client.GetData(ids='ga:'+ga_prifileid,dimensions="ga:pagePath",metrics="ga:pageviews",
     start_date="%d-%s-%d"%(now.year,month_minus_one,now.day),end_date ="%d-%s-%d"%(now.year,
     month,now.day)) 
     dictionary={}
