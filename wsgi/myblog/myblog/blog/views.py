@@ -190,7 +190,7 @@ def vote(request,pollSlug):
            return HttpResponseRedirect(reverse(getChoices, args=(pollSlug,)))
     else:
       return HttpResponseRedirect(reverse(getChoices,args=(pollSlug,)))
-def popular(request):
+def popular(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
     clientClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
@@ -207,6 +207,30 @@ def popular(request):
       month_minus_one = '0'+str(month_minus_one)
     else:
       month_minus_one = str(month_minus_one)
-    data = client.getData(ids=ga_profileid,dimensions="ga:pagePath",metrics="pageviews",
+    data = client.getData(ids=ga_profileid,dimensions="ga:pagePath",metrics="ga:pageviews",
     start_date="%d-%s-%d"%(now.year,month_minus_one,now.day),end_date ="%d-%s-%d"%(now.year,
-    month,now.day))  
+    month,now.day)) 
+    dictionary={}
+    for de in data.entry:
+      view, args, kwargs = resolve(str(de.pagePath))
+      if view == getPost:
+                e = Post.objects.get(slug = kwargs["postSlug"])
+                if e not in dictionary:
+                   dictionary[e]=0
+                else:
+		  dictionary[e]+=1
+    posts=[]
+    i=0
+    for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
+      if i<5:
+          posts.append(element[0])
+          i+=1
+      else:
+	break
+    pages = Paginator(posts, 5)
+    try:
+       returned_page = pages.page(selected_page)
+    except EmptyPage:
+       returned_page = pages.page(pages.num_pages)
+    return render_to_response('blog/posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
+                              'page':returned_page,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
