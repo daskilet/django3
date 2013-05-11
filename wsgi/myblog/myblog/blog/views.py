@@ -194,6 +194,7 @@ def popular(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
     client.ClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
+    client.ssl = True
     now = datetime.datetime.now()
     month=now.month
     month_minus_one = month-1
