@@ -193,7 +193,7 @@ def vote(request,pollSlug):
 def popular(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
-    clientClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
+    client.ClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
     now = datetime.datetime.now()
     month=now.month
     month_minus_one = month-1
