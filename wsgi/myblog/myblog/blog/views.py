@@ -217,16 +217,14 @@ def popular(request, selected_page=1):
       if view == getPost:
                 e = Post.objects.get(slug = kwargs["postSlug"])
                 if e not in dictionary:
-                   dictionary[e]=0
+                   dictionary[e]=1
                 else:
 		  dictionary[e]+=1
     posts=[]
-    views_count = []
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
       if i<5:
-          posts.append(element[0])
-          views_count.append(element[1])
+          posts.append(element)
           i+=1
       else:
 	break
@@ -236,4 +234,4 @@ def popular(request, selected_page=1):
     except EmptyPage:
        returned_page = pages.page(pages.num_pages)
     return render_to_response('blog/posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
-                              'page':returned_page,'views_count':views_count,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
+                              'page':returned_page,'views_count':True,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
