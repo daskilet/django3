@@ -224,17 +224,17 @@ def popular(request, selected_page=1):
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
       if i<5:
-          posts.append(element)
+          posts.append([element[0],str(element[1])])
           i+=1
       else:
 	break
     for unit in posts:
       if unit[1]%10==1:
-	unit[1]=str(unit[1])+' просмотр'
+	unit[1]+=' просмотр'
       elif unit[1]%10 in range(2,5):
-	unit[1]=str(unit[1])+' просмотра'
+	unit[1]+=' просмотра'
       else:
-	unit[1]=str(unit[1])+' просмотров'
+	unit[1]+=' просмотров'
     pages = Paginator(posts, 5)
     try:
        returned_page = pages.page(selected_page)
