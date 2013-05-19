@@ -1,10 +1,14 @@
 {% include 'blog/logo.html' %}
 {% include 'blog/header.html' %}
 {% include 'blog/poisk.html' %}
+{% load disqus_tags %}
     {% for post in text %}
         <div class="post">
         <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
         {{ post.body|safe }}
+        <br />
+        <a href="{{ post.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a>
+        {% disqus_num_replies %}
         </div>
     {% endfor %}
 {% include 'blog/footer.html' %}
