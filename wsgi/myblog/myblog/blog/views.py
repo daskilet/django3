@@ -191,7 +191,7 @@ def vote(request,pollSlug):
            return HttpResponseRedirect(reverse(getChoices, args=(pollSlug,)))
     else:
       return HttpResponseRedirect(reverse(getChoices,args=(pollSlug,)))
-def popular(request, selected_page=1):
+def getPopular(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
     client.ClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
