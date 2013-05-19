@@ -223,7 +223,7 @@ def getVisited(request, selected_page=1):
                    dictionary[e]=1
                 else:
 		  dictionary[e]+=1
-           except Post.DoesNotExist:
+           except IndexError:
 	     pass
       except Resolver404:
 	pass
