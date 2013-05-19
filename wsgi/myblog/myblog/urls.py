@@ -6,8 +6,7 @@ from django.contrib import admin
 from myblog.blog.models import Category
 from django.conf import settings
 admin.autodiscover()
-import haystack 
-haystack.autodiscover()
+
 urlpatterns = patterns('', 
     # Example:
      (r'^category_list/?$',category_list),
