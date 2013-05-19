@@ -22,7 +22,7 @@ MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 import os
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
-HAYSTACK_SERACH_ENGINE='whoosh'
+HAYSTACK_SEARCH_ENGINE='whoosh'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
