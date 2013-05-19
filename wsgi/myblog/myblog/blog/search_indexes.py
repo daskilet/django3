@@ -3,7 +3,7 @@ from haystack import indexes
 from haystack import site
 from myblog.blog.models import Post
 import datetime
-class PostIndex(indexes.RealTimeSearchIndex):
+class PostIndex(indexes.RealTimeSearchIndex,indexes.Indexable):
     text = indexes.CharField(use_template=True, document=True)
     title = indexes.CharField(model_attr='title')
     body = indexes.CharField(model_attr='body')
