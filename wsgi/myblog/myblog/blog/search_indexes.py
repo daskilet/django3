@@ -8,7 +8,7 @@ class PostIndex(indexes.RealTimeSearchIndex,indexes.Indexable):
     body = indexes.CharField(model_attr='body')
     author = indexes.CharField(model_attr='author')
     categories = indexes.CharField(model_attr='categories')
-    def get_queryset(self):
+    def index_queryset(self):
         "Used when the entire index for model is updated."
         return Post.objects.filter(created__lte=datetime.datetime.now())
     def get_model(self):
