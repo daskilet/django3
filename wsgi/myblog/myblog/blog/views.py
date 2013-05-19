@@ -157,8 +157,8 @@ def search(request):
 	results = SearchQuerySet().auto_query(sTerm)
 	posts = []
 	for r in results:
-	  if r.object:
-             posts.append(r.object)
+            posts.append(r.object)
+        posts = [element for element in posts if element]
 	#videos list contains all the videos those match the search criteria
 	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
@@ -191,7 +191,7 @@ def vote(request,pollSlug):
            return HttpResponseRedirect(reverse(getChoices, args=(pollSlug,)))
     else:
       return HttpResponseRedirect(reverse(getChoices,args=(pollSlug,)))
-def getPopular(request, selected_page=1):
+def getVisited(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
     client.ClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
@@ -225,6 +225,7 @@ def getPopular(request, selected_page=1):
         except Post.DoesNotExist:
 	  pass
     posts=[]
+    print 'yo-hoho'
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
       if i<5:
@@ -244,5 +245,5 @@ def getPopular(request, selected_page=1):
        returned_page = pages.page(selected_page)
     except EmptyPage:
        returned_page = pages.page(pages.num_pages)
-    return render_to_response('blog/posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
-                              'page':returned_page,'views_count':True,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
+    return render_to_response('blog/popular.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
+                              'page':returned_page,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)

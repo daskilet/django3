@@ -3,17 +3,6 @@
 {% include 'blog/poisk.html' %}
         {% load disqus_tags %}
         {% if posts %}
-        {% if views_count %}
-        {% for post in posts %}
-        <div class="post">
-        <h1><a href="http://{{ site }}/{{ post.0.get_absolute_url }}">{{ post.0.title }} ({{ post.1 }} )</a></h1>
-        {{ post.0.short_body|safe }}
-        <br />
-        <a href="{{ post.0.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.0.id }}">View Comments</a>
-         {% disqus_num_replies %}
-        </div>
-        {% endfor %}
-        {% else %}
         {% for post in posts %}
         <div class="post">
         <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
@@ -23,7 +12,6 @@
          {% disqus_num_replies %}
         </div>
         {% endfor %}
-        {% endif %}
         <br />
         {% if page.has_previous %}
         <a href="/{{ page.previous_page_number }}/">Previous Page</a>
