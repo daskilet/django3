@@ -24,7 +24,6 @@ import os
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 HAYSTACK_SEARCH_ENGINE='whoosh'
 HAYSTACK_WHOOSH_PATH=ROOTDIR+'/index/'
-}
 HAYSTACK_SITECONF = 'myblog.search_sites'
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
 STATIC_URL = '/static/'
