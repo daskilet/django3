@@ -1,0 +1,27 @@
+{% include 'blog/logo.html' %}
+{% include 'blog/header.html' %}
+{% include 'blog/poisk.html' %}
+        {% load disqus_tags %}
+        {% if posts %}
+        {% for post in posts %}
+        <div class="post">
+        <h1><a href="http://{{ site }}/{{ post.0.get_absolute_url }}">{{ post.0.title }} ({{ post.1 }} )</a></h1>
+        {{ post.0.short_body|safe }}
+        <br />
+        <a href="{{ post.0.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.0.id }}">View Comments</a>
+         {% disqus_num_replies %}
+        </div>
+        {% endfor %}
+        <br />
+        {% if page.has_previous %}
+        <a href="/{{ page.previous_page_number }}/">Previous Page</a>
+        {% endif %}
+        {% if page.has_next %}
+        <a href="/{{ page.next_page_number }}/">Next Page</a>
+        {% endif %}
+        {% else %}
+        <div class="post">
+        <p>No posts matched</p>
+        </div>
+        {% endif %}
+{% include 'blog/footer.html' %}

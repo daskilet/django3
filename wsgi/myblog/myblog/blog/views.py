@@ -157,8 +157,7 @@ def search(request):
 	results = SearchQuerySet().auto_query(sTerm)
 	posts = []
 	for r in results:
-            posts.append(r.object)
-        posts = [element for element in posts if element]
+		posts.append(r.object)
 	#videos list contains all the videos those match the search criteria
 	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
@@ -216,14 +215,11 @@ def getVisited(request, selected_page=1):
     for de in data.entry:
       view, args, kwargs = resolve(str(de.pagePath))
       if view == getPost:
-	try:
-            e = Post.objects.get(slug = kwargs["postSlug"])
-            if e not in dictionary:
-               dictionary[e]=1
-            else:
-	       dictionary[e]+=1
-        except Post.DoesNotExist:
-	  pass
+                e = Post.objects.get(slug = kwargs["postSlug"])
+                if e not in dictionary:
+                   dictionary[e]=1
+                else:
+		  dictionary[e]+=1
     posts=[]
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
@@ -245,4 +241,4 @@ def getVisited(request, selected_page=1):
     except EmptyPage:
        returned_page = pages.page(pages.num_pages)
     return render_to_response('blog/popular.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
-                              'page':returned_page,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
+                              'page':returned_page,'views_count':True,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
