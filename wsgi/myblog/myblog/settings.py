@@ -20,10 +20,15 @@ ADMINS = (
 GOOGLE_ANALYTICS_PROPERTY_ID = GOOGLE_ID
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
+import os
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': ROOTDIR+'/index/'),
+    },
+}
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 HAYSTACK_SITECONF = 'myblog.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = ROOTDIR+'/index/'
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
 STATIC_URL = '/static/'
 if ON_OPENSHIFT:
