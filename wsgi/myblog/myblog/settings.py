@@ -24,7 +24,7 @@ import os
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': ROOTDIR+'/index/'),
+        'PATH': ROOTDIR+'/index/',
     },
 }
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
