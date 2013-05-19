@@ -158,6 +158,7 @@ def search(request):
 	posts = []
 	for r in results:
 		posts.append(r.object)
+        posts = [element for element in posts if element]
 	#videos list contains all the videos those match the search criteria
 	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
@@ -217,7 +218,7 @@ def getVisited(request, selected_page=1):
          view, args, kwargs = resolve(str(de.pagePath))
          if view == getPost:
 	   try:
-                e = Post.objects.filter(slug = kwargs["postSlug"])
+                e = Post.objects.filter(slug = kwargs["postSlug"])[0]
                 if e not in dictionary:
                    dictionary[e]=1
                 else:
