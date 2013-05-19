@@ -12,4 +12,4 @@ class PostIndex(indexes.RealTimeSearchIndex):
     def index_queryset(self):
         "Used when the entire index for model is updated."
         return Post.objects.filter(created__lte=datetime.datetime.now())
-site.register(Note, NoteIndex)
+site.register(Post, PostIndex)
