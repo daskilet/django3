@@ -215,11 +215,14 @@ def getVisited(request, selected_page=1):
     for de in data.entry:
       view, args, kwargs = resolve(str(de.pagePath))
       if view == getPost:
+	try:
                 e = Post.objects.get(slug = kwargs["postSlug"])
                 if e not in dictionary:
                    dictionary[e]=1
                 else:
 		  dictionary[e]+=1
+        except Post.DoesNotExist:
+	  pass
     posts=[]
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
