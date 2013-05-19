@@ -20,7 +20,7 @@ ADMINS = (
 GOOGLE_ANALYTICS_PROPERTY_ID = GOOGLE_ID
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
-
+ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 HAYSTACK_SITECONF = 'myblog.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = ROOTDIR+'/index/'
@@ -117,7 +117,6 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 GOOGLE_ANALYTICS_MODEL = True
 ROOT_URLCONF = 'myblog.urls'
 
-ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
