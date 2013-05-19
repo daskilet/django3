@@ -1,6 +1,5 @@
 # -*- coding: utf8 -*-
 from haystack import indexes
-from haystack import site
 from myblog.blog.models import Post
 import datetime
 class PostIndex(indexes.RealTimeSearchIndex,indexes.Indexable):
@@ -12,5 +11,5 @@ class PostIndex(indexes.RealTimeSearchIndex,indexes.Indexable):
     def get_queryset(self):
         "Used when the entire index for model is updated."
         return Post.objects.filter(created__lte=datetime.datetime.now())
-
-site.register(Post, PostIndex)
+    def get_model(self):
+            return Post 
