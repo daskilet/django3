@@ -23,7 +23,7 @@ ALLOWED_HOSTS = ['*']
 
 HAYSTACK_SITECONF = 'myblog.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'index')
+HAYSTACK_WHOOSH_PATH = ROOTDIR+'/index/'
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
 STATIC_URL = '/static/'
 if ON_OPENSHIFT:
