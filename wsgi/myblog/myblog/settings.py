@@ -98,7 +98,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
-  put_k_custom_middleware = 'myblog.custom'
+put_k_custom_middleware = 'myblog.custom'
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
      put_k_custom_middleware+'.UserBasedExceptionMiddleware',
