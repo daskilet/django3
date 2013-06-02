@@ -148,7 +148,7 @@ INSTALLED_APPS = (
     'haystack',
     'south',
     'myblog.blog',
-    'myblog.custom'
+    'myblog.customm',
 )
 DISQUS_API_KEY = DISQUS_API
 DISQUS_WEBSITE_SHORTNAME = 'daskiletblog'
