@@ -31,7 +31,7 @@ def categories_spisok():
 	  slovar[element]+=1
   for element in Post.objects.all():
     if not element.categories.all():
-      slovar['other']+=1
+      slovar['other']+=
   itog_spisok = [(key.title,slovar[key]) for key in slovar.keys()]  
   return itog_spisok
 def archive():
