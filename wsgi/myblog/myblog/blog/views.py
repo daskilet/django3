@@ -13,7 +13,7 @@ from haystack.query import SearchQuerySet
 from django.core.urlresolvers import reverse,resolve, Resolver404
 import simplejson as json
 import datetime
-import o
+import os
 import gdata.analytics.service
 from myblog.true_settings import *
 class Dlya_saita(object):
@@ -31,7 +31,7 @@ def categories_spisok():
 	  slovar[element]+=1
   for element in Post.objects.all():
     if not element.categories.all():
-      slovar['other']+=1
+      slovar['other']+=
   itog_spisok = [(key.title,slovar[key]) for key in slovar.keys()]  
   return itog_spisok
 def archive():

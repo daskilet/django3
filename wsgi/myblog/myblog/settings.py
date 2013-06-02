@@ -99,15 +99,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
-put_k_custom_middleware = 'myblog.customm.debug'
 MIDDLEWARE_CLASSES = (
-     put_k_custom_middleware+'.UserBasedExceptionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'myblog.customm.debugg.UserBasedExceptionMiddleware',
+
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
@@ -149,7 +149,6 @@ INSTALLED_APPS = (
     'haystack',
     'south',
     'myblog.blog',
-    'myblog.customm',
 )
 DISQUS_API_KEY = DISQUS_API
 DISQUS_WEBSITE_SHORTNAME = 'daskiletblog'
