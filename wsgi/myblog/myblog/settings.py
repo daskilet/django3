@@ -20,7 +20,6 @@ ADMINS = (
 GOOGLE_ANALYTICS_PROPERTY_ID = GOOGLE_ID
 MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
-import os
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 HAYSTACK_SEARCH_ENGINE='whoosh'
 if not ON_OPENSHIFT:
