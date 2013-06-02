@@ -7,9 +7,6 @@ ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
   
-RAVEN_CONFIG = {
-    'dsn': 'https://b20c19e5dcc544ca955db30b7af71977:a2938a9bb12d4360ba14091559b15088@app.getsentry.com/9078',
-}
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 if ON_OPENSHIFT:
     DEBUG = False
@@ -106,6 +103,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'myblog.customm.debugg.UserBasedExceptionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
@@ -146,7 +144,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'disqus',
-    'raven.contrib.django.raven_compat',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
