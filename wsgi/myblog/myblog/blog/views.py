@@ -203,15 +203,17 @@ def getVisited(request, selected_page=1):
       month_minus_one=12
     if month<10:
       month = '0'+str(month)
+      day = '0'+str(now.day)
     else:
       month = str(month)
+      day = str(now.day)
     if month_minus_one<10:
       month_minus_one = '0'+str(month_minus_one)
     else:
       month_minus_one = str(month_minus_one)
     data = client.GetData(ids='ga:'+ga_prifileid,dimensions="ga:pagePath",metrics="ga:pageviews",
-    start_date="%d-%s-%d"%(now.year,month_minus_one,now.day),end_date ="%d-%s-%d"%(now.year,
-    month,now.day)) 
+    start_date="%d-%s-%s"%(now.year,month_minus_one,day),end_date ="%d-%s-%s"%(now.year,
+    month,day)) 
     dictionary={}
     for de in data.entry:
       try:
