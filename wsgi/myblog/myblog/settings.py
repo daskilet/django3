@@ -12,7 +12,6 @@ if ON_OPENSHIFT:
     DEBUG = False
 else:
     DEBUG = True
-DEBUG=True
 TEMPLATE_DEBUG = DEBUG  
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -23,7 +22,10 @@ ALLOWED_HOSTS = ['*']
 import os
 ROOTDIR = os.path.abspath(os.path.dirname(__file__)) 
 HAYSTACK_SEARCH_ENGINE='whoosh'
-HAYSTACK_WHOOSH_PATH=ROOTDIR+'/index/'
+if not ON_OPENSHIFT:
+   HAYSTACK_WHOOSH_PATH='/home/daskilet/bin/Python/django/djcode3.1'
+else:
+  HAYSTACK_WHOOSH_PATH=os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'index')
 HAYSTACK_SITECONF = 'myblog.search_sites'
 AUTH_PROFILE_MODULE = 'blog.UserProfile'
 STATIC_URL = '/static/'
@@ -97,9 +99,13 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
-
+if not ON_OPENSHIFT:
+  put_k_custom_middleware = 'myblog.custom'
+else:
+     put_k_custom_middleware=os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'myblog','myblog','custom.py')
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+     put_k_custom_middleware+'.UserBasedExceptionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
