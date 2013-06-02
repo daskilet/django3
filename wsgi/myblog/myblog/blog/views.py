@@ -13,7 +13,7 @@ from haystack.query import SearchQuerySet
 from django.core.urlresolvers import reverse,resolve, Resolver404
 import simplejson as json
 import datetime
-import os
+import o
 import gdata.analytics.service
 from myblog.true_settings import *
 class Dlya_saita(object):
