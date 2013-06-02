@@ -98,10 +98,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
-if not ON_OPENSHIFT:
   put_k_custom_middleware = 'myblog.custom'
-else:
-     put_k_custom_middleware=os.environ.get('OPENSHIFT_REPO_DIR')+'.wsgi.myblog.myblog.custom'
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
      put_k_custom_middleware+'.UserBasedExceptionMiddleware',
