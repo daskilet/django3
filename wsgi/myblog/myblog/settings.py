@@ -100,12 +100,12 @@ TEMPLATE_LOADERS = (
 )
 put_k_custom_middleware = 'myblog.customm.debug'
 MIDDLEWARE_CLASSES = (
+     put_k_custom_middleware+'.UserBasedExceptionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    put_k_custom_middleware+'.UserBasedExceptionMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
