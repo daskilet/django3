@@ -21,12 +21,16 @@
     </head>
     <body>
      <div id="polls">
-           <h3> Our current poll</h3>
+           <div class="box">
            {% if latest_poll_list %}
+           <h3> Наш текущий опрос</h3>
             <h4 style="text-align:center;font-size:18px;">{{ latest_poll_list.question }}</h4>
+           {% elif choices_json %}
+           </br>
            {% else %}
                <p>No polls are available.</p>
            {% endif %}
+           {% if not choices_json %}
            <form action="/polls/{{ latest_poll_list.slug }}/vote/" method="post">
            {% csrf_token %}
            {% for choice in choices %}
@@ -36,19 +40,28 @@
               <input type="submit" value="Vote" style="margin-top:20px;" />
              </form>
           <a href="http://{{ site }}/poll_list" style="font-size:14px;">poll archive</a>
-          <br></br><br></br>
+          {% else %}
+          <br></br><br></br><br></br>
+          {% endif %}
+          </div>
+          <div class="box">
           <h3 style="text-align:center;">Категории</h3>
           {% for element in spisok_categ %}
               <p style="text-align:center;"><a href="http://{{site}}/all_of_that_category/{{element.0}}">{{ element.0 }}({{ element.1}})</a></p>
              {% endfor %}
           </div>
+          </div>
+            <div class="box">
             <h3>Календарь</h3>
             {% include 'blog/example-full.html' %}
+            </div>
         <div id='archive'>
+        <div class="box">
         <h3>Архив публикаций</h3>
         {% for element in spisok_publ %}
             <p><a href="http://{{site}}/archive/{{ element.3 }}/">{{ element.1 }}</a> {{ element.2 }} - {{element.0}}</p>
         {% endfor %}    
+        </div>
         </div>
         <div id="main">
             <h1>My Django Blog</h1>

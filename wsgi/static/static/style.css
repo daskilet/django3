@@ -78,3 +78,22 @@ ul#pageList li a {color: #547654;
 #archive a {color: #547654; 
 	  font-size: 16px;
 }
+.box {	    background-repeat: no-repeat;  /*отключение повтора изображения*/
+	    background-attachment: scroll left bottom;
+	    background-position: left bottom; /*позиция изображения – левый нижний угол*/
+	    margin-bottom: 10px;  /*отступ снизу, если будет еще один блок ниже, то он будет опускаться настолько вниз, насколько наш блок будет заполнен содержимым*/
+	    padding: 0 0 15px; /*отступ внутри блока*/
+	    width: 250px; /*ширина блока*/
+	 }
+	 
+	 /*  h3 заголовок, под который подложено фоновое изображение*/
+	 
+.box h3 {	 
+	    background: url(box.jpg) repeat scroll 0 0;
+	    color: #000;
+            font-size: 17px;
+	    height: 35px;
+	    line-height: 30px;
+	    margin: 0;
+	    padding: 0 15px;
+	   }
