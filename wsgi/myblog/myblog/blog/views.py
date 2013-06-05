@@ -21,18 +21,18 @@ class Dlya_saita(object):
     self.ssilka = request.get_host()
     self.context =  RequestContext(request)
 def categories_spisok():
+  slovar={}
   spisok_categ = [element for element in Category.objects.all()]
-  slovar = {'other':0}
   for element in spisok_categ:
     slovar[element]=0
-  for element in slovar.keys():
-     for unit in Post.objects.all():
-        if element in unit.categories.all():
-	  slovar[element]+=1
-  for element in Post.objects.all():
-    if not element.categories.all():
-      slovar['other']+=1
-  itog_spisok = [(key.title,slovar[key]) for key in slovar.keys()]  
+  try:
+     for element in slovar.keys():
+        for unit in Post.objects.all():
+           if element in unit.categories.all():
+	     slovar[element]+=1
+     itog_spisok = [(key.title,slovar[key],key.slug) for key in slovar.keys()]
+  except:
+     itog_spisok=[]
   return itog_spisok
 def archive():
   def padezh(n):
@@ -166,7 +166,7 @@ def recent_polls(request):
     try:
        latest_poll_list = Poll.objects.all()[0]
     except IndexError:
-      latest_poll_list=''
+      latest_poll_list=None
     choices = Choice.objects.filter(poll=latest_poll_list)
     return  {'spisok_categ':categories_spisok(),'spisok_publ':archive(),'latest_poll_list':latest_poll_list,'choices':choices}
 def vote(request,pollSlug):

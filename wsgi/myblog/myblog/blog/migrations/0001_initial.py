@@ -21,6 +21,7 @@ class Migration(SchemaMigration):
         db.create_table(u'blog_post', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=60)),
+            ('short_body', self.gf('django.db.models.fields.TextField')()),
             ('body', self.gf('django.db.models.fields.TextField')()),
             ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=40)),
@@ -148,9 +149,10 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Post'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"}),
             'body': ('django.db.models.fields.TextField', [], {}),
-            'categories': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['blog.Category']", 'null': 'True', 'through': u"orm['blog.CategoryToPost']", 'blank': 'True'}),
+            'categories': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['blog.Category']", 'through': u"orm['blog.CategoryToPost']", 'symmetrical': 'False'}),
             'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'short_body': ('django.db.models.fields.TextField', [], {}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '40'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '60'})
         },
