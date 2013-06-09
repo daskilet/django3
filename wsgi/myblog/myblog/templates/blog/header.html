@@ -41,13 +41,16 @@
              </form>
           <a href="http://{{ site }}/poll_list" style="font-size:14px;">poll archive</a>
           {% else %}
-          <br></br><br></br><br></br>
+          <br></br><br></br>
           {% endif %}
-          </div>
-          <div class="box">
+          <br></br>
           <h3 style="text-align:center;">Категории</h3>
-          {% for element in spisok_categ %}
-              <p style="text-align:center;"><a href="http://{{site}}/all_of_that_category/{{element.2}}">{{ element.0 }}({{ element.1}})</a></p>
+          {% for element in spisok_categ|slice:":10" %}
+          {% if forloop.counter == 10 %}
+          <p style="text-align:center;"><a href="http://{{site}}/category_list">...</a></p>
+          {% else %}
+          <p style="text-align:center;"><a href="http://{{site}}/all_of_that_category/{{element.2}}">{{ element.0 }}({{ element.1}})</a></p>
+          {% endif %}
              {% endfor %}
           </div>
           </div>
@@ -61,8 +64,17 @@
         {% for element in spisok_publ %}
             <p><a href="http://{{site}}/archive/{{ element.3 }}/">{{ element.1 }}</a> {{ element.2 }} - {{element.0}}</p>
         {% endfor %}    
+        <h3 style="text-align:center;">На сайте</h3>
+        <br></br>
+<script id="_waublv">var _wau = _wau || [];
+_wau.push(["colored", "m0qgy0jmjk3q", "blv", "ffc20e000000"]);
+(function() {var s=document.createElement("script"); s.async=true;
+s.src="http://widgets.amung.us/colored.js";
+document.getElementsByTagName("head")[0].appendChild(s);
+})();</script>
         </div>
         </div>
+        
         <div id="main">
             <h1>My Django Blog</h1>
             <a href="/feeds/posts/"><img src="/static/RSS.png" width="50px" height="50px"></a>
@@ -75,5 +87,7 @@
                 {% endfor %}
                 <li><a href="http://{{ site }}/most_visited">Популярное за месяц</a></li>
                 <li><a href="http://{{ site }}/thanks">Thanks</a></li>
+                <li><a href="http://{{ site }}/feedback">Обратная связь</a></li>
+
             </ul>
             

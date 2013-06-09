@@ -16,6 +16,25 @@ import datetime
 import os
 import gdata.analytics.service
 from myblog.true_settings import *
+from myblog.blog.forms import FeedbackForm
+
+ 
+def show_feedback_form(request):
+    ssil = Dlya_saita(request)
+    # Обработка POST запроса
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+	    form.send_mail()
+            # Если форма прошла валидацию, благодарим пользователя за отзыв
+            return render_to_response('blog/thankyou.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
+                              'site': ssil.ssilka,'form':form},**recent_polls(request)),context_instance = ssil.context)
+    else:
+    # Если не было POST, рисуем пустую форму
+        form = FeedbackForm()
+    return render_to_response('blog/feedback.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
+                             'site': ssil.ssilka,'form':form},**recent_polls(request)),context_instance = ssil.context)
+
 class Dlya_saita(object):
   def __init__(self,request):
     self.ssilka = request.get_host()

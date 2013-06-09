@@ -1,0 +1,13 @@
+{% include 'blog/logo.html' %}
+{% include 'blog/header.html' %}
+{% include 'blog/poisk.html' %}
+<h4>Итак, это  у нас форма обратной связи такая. Вы указываете всё, что требуется
+в полях, а мы в свою очередь попытаемся отреагировать на ваш отзыв/жалобу/гражданскую_позицию
+со всей возможной оперативностью.</h4>
+<form action="http://{{ site }}/thanks" method="post">
+{% csrf_token %}
+{{ form.as_ul }}
+<br></br>
+<input type="submit" />
+</form>
+{% include 'blog/footer.html' %}

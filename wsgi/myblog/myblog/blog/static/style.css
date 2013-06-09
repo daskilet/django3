@@ -1,4 +1,6 @@
 body {
+    margin:0px;
+    padding:0px;
     background: url(fon.jpg);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -7,6 +9,7 @@ body {
     width: 800px;
     height: 100%;
     margin: 50px auto;
+    padding-bottom:100px;
 }
 
 #main a {color: #547654; 
@@ -98,3 +101,18 @@ ul#pageList li a {color: #547654;
 	    margin: 0;
 	    padding: 0 15px;
 	 }
+#footer {
+   background: url(first.jpg) repeat scroll 0 0;
+	    color: #000;
+	    font-size: 17px;
+	    line-height: 30px;
+	    padding: 0 15px;
+            height:100px;
+            margin:-10px auto 0;
+            width:960px;
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+
+}
+  
