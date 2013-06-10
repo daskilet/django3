@@ -9,12 +9,13 @@ from django import forms
 from django.conf import settings
 from django.template.loader import render_to_string
 from myblog.true_settings import *
+from captcha.fields import CaptchaField
 class FeedbackForm(forms.Form):
     email = forms.CharField(label=u'Ваш e-mail', max_length=200)
     topic = forms.CharField(label=u'Тема', max_length=200)
     response = forms.CharField(label=u'Что стряслось', max_length=500,
     widget=forms.Textarea(attrs={'rows': 5, 'cols': 30}))
-
+    captcha = CaptchaField()
     def send_mail(self):
         # готовим контекст для сообщения
         response = self.cleaned_data['response']

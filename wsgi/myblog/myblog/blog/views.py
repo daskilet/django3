@@ -18,7 +18,6 @@ import gdata.analytics.service
 from myblog.true_settings import *
 from myblog.blog.forms import FeedbackForm
 
- 
 def show_feedback_form(request):
     ssil = Dlya_saita(request)
     # Обработка POST запроса

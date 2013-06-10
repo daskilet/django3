@@ -36,3 +36,6 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+urlpatterns += patterns('',
+    url(r'^captcha/', include('captcha.urls')),
+)

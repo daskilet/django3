@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'disqus',
+    'captcha',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
