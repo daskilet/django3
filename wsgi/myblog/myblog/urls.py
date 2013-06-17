@@ -30,6 +30,7 @@ urlpatterns = patterns('',
      (r'^all_of_that_category/(?P<categorySlug>[-a-zA-Z0-9]+)/?$',getCategory),
      (r'^all_of_that_category/(?P<categorySlug>[-a-zA-Z0-9]+)/(?P<selected_page>\d+)/?$',getCategory),
      (r'^comments/', include('django.contrib.comments.urls')),
+     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
      (r'^feeds/posts/$', PostsFeed()),
      (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),)
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'disqus',
     'captcha',
+    'django.contrib.sitemaps',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
     'haystack',
