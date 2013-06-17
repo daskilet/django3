@@ -1,12 +1,15 @@
 # -*- coding: utf8 -*-
 from django.conf.urls import *
 from myblog.blog.views import *
+from myblog.blog.sitemaps import BlogSitemap
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from myblog.blog.models import Category
 from django.conf import settings
 admin.autodiscover()
-
+sitemaps = {
+    'blog': BlogSitemap,
+}
 urlpatterns = patterns('', 
     # Example:
      (r'^category_list/?$',category_list),
