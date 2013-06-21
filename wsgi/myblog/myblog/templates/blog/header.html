@@ -1,7 +1,33 @@
 {% load analytics %}
 <html>
-    <head>   
-     <title>My Primitive Blog</title>
+    <head>
+    {% if htm_name == "thankyou" %}
+       <meta name=”description” content="Confirmation of your feedback being sent."/>
+    {% elif htm_name == "feedback" %}
+       <meta name=”description” content="Form of feedback with site administration."/>
+    {% elif htm_name == "category_list" %}
+       <meta name=”description” content="List of all existing categories."/>
+    {% elif htm_name == "poll_list" %}
+       <meta name=”description” content="List of all polls of our site ever."/>
+    {% elif htm_name == "single" %}
+       <meta name=”description” content="Desribes a single post."/>
+    {% elif htm_name == "choices_for_poll" %}
+       <meta name=”description” content="Shows results of current poll and vizualize them."/>
+    {% elif htm_name == "info" %}
+       <meta name=”description” content="Shows some useful info about a site."/>
+    {% elif htm_name == "thanks" %}
+       <meta name=”description” content="Shows internet resourses or people, to which author feels grateful for some reason."/>
+    {% elif htm_name == "profile" %}
+       <meta name=”description” content="Views info about publisher of the post, if he added it."/>
+    {% elif htm_name == "poisk_rezult" %}
+       <meta name=”description” content="Let us see rezult of the search on the website."/>
+    {% elif htm_name == "popular" %}
+       <meta name=”description” content="Month's most popular posts."/>
+    {% else %}
+       <meta name=”description” content="Posts or categories of the site."/>
+    {% endif %}
+    <meta charset="utf-8" />   
+     <title>Примитив</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -41,7 +67,7 @@
              </form>
           <a href="http://{{ site }}/poll_list" style="font-size:14px;">poll archive</a>
           {% else %}
-          <br></br><br></br>
+          <br></br><br></br><br></br>
           {% endif %}
           <br></br>
           <h3 style="text-align:center;">Категории</h3>

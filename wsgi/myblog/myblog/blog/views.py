@@ -27,12 +27,12 @@ def show_feedback_form(request):
 	    form.send_mail()
             # Если форма прошла валидацию, благодарим пользователя за отзыв
             return render_to_response('blog/thankyou.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
-                              'site': ssil.ssilka,'form':form},**recent_polls(request)),context_instance = ssil.context)
+                              'site': ssil.ssilka,'form':form,'htm_name':'thankyou'},**recent_polls(request)),context_instance = ssil.context)
     else:
     # Если не было POST, рисуем пустую форму
         form = FeedbackForm()
     return render_to_response('blog/feedback.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
-                             'site': ssil.ssilka,'form':form},**recent_polls(request)),context_instance = ssil.context)
+                             'site': ssil.ssilka,'form':form,'htm_name':'feedback'},**recent_polls(request)),context_instance = ssil.context)
 
 class Dlya_saita(object):
   def __init__(self,request):
@@ -80,12 +80,12 @@ def category_list(request):
   ssil=Dlya_saita(request)
   categories=Category.objects.all()
   return render_to_response('blog/category_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
-  "categories":categories,'site': ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  "categories":categories,'site': ssil.ssilka,'htm_name':'category_list'},**recent_polls(request)),context_instance=ssil.context)
 def poll_list(request):
   ssil=Dlya_saita(request)
   polls = Poll.objects.all()
   return render_to_response('blog/poll_list.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),\
-  "polls":polls,'site': ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  "polls":polls,'site': ssil.ssilka,'htm_name':'poll_list'},**recent_polls(request)),context_instance=ssil.context)
 def getPosts(request,selected_page=1,auth=None,monthSlug=None):
     # Get all blog posts
     ssil = Dlya_saita(request)
@@ -104,11 +104,11 @@ def getPosts(request,selected_page=1,auth=None,monthSlug=None):
        returned_page = pages.page(pages.num_pages)
     # Display all the posts
     return render_to_response('blog/posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
-                              'page':returned_page,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
+                              'page':returned_page,'site': ssil.ssilka,'htm_name':'posts'},**recent_polls(request)),context_instance = ssil.context)
 def getPost(request,postSlug):
   ssil = Dlya_saita(request)
   post = Post.objects.filter(slug=postSlug)
-  return render_to_response('blog/single.html',dict({ 'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':post,'site': ssil.ssilka},\
+  return render_to_response('blog/single.html',dict({ 'spisok_categ':categories_spisok(),'htm_name':'single','spisok_publ':archive(),'posts':post,'site': ssil.ssilka},\
                             **recent_polls(request)),context_instance = ssil.context)
 def getChoices(request,pollSlug):
   ssil = Dlya_saita(request)
@@ -117,7 +117,7 @@ def getChoices(request,pollSlug):
   mas=[(element.choice,element.votes) for element in choices]
   mas.append(choices[0].poll.question)
   choices_json = json.dumps(mas)
-  return render_to_response('blog/choices_for_poll.html',{'spisok_categ':categories_spisok(),'site':ssil.ssilka,'spisok_publ':archive(),'spisok_publ':archive(),'choices':choices,\
+  return render_to_response('blog/choices_for_poll.html',{'spisok_categ':categories_spisok(),'htm_name':'choices_for_poll','site':ssil.ssilka,'spisok_publ':archive(),'spisok_publ':archive(),'choices':choices,\
                            'choices_json':choices_json},context_instance=ssil.context)  
 def getCategory(request,categorySlug,selected_page=1):
   ssil = Dlya_saita(request)
@@ -140,7 +140,7 @@ def getCategory(request,categorySlug,selected_page=1):
   except EmptyPage:
     returned_page = pages.page(pages.num_pages)
   return render_to_response('blog/posts.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),"posts":returned_page.object_list,\
-  "page":returned_page,"category":category,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
+  "page":returned_page,"category":category,'site': ssil.ssilka,'htm_name':'posts'},**recent_polls(request)),context_instance = ssil.context)
 class PostsFeed(Feed):
     title = "My Django Blog posts"
     link = "feeds/posts/"
@@ -156,13 +156,13 @@ class PostsFeed(Feed):
         return item.body
 def getInfo(request):
   ssil = Dlya_saita(request)
-  return render_to_response('blog/info.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  return render_to_response('blog/info.html',dict({'spisok_categ':categories_spisok(),'htm_name':'info','spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def getThanks(request):
   ssil = Dlya_saita(request)
-  return render_to_response('blog/thanks.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
+  return render_to_response('blog/thanks.html',dict({'spisok_categ':categories_spisok(),'htm_name':'thanks','spisok_publ':archive(),'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def getProfile(request,postSlug):
   ssil = Dlya_saita(request)
-  return render_to_response('blog/profile.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'user':Post.objects.get(slug=postSlug).author,\
+  return render_to_response('blog/profile.html',dict({'spisok_categ':categories_spisok(),'htm_name':'profile','spisok_publ':archive(),'user':Post.objects.get(slug=postSlug).author,\
                            'site':ssil.ssilka},**recent_polls(request)),context_instance=ssil.context)
 def search(request):
   ssil = Dlya_saita(request)
@@ -178,7 +178,7 @@ def search(request):
 		posts.append(r.object)
         posts = [element for element in posts if element]
 	#videos list contains all the videos those match the search criteria
-	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
+	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'htm_name':'poisk_rezult','spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
 def recent_polls(request):
     try:
@@ -209,6 +209,8 @@ def vote(request,pollSlug):
            return HttpResponseRedirect(reverse(getChoices, args=(pollSlug,)))
     else:
       return HttpResponseRedirect(reverse(getChoices,args=(pollSlug,)))
+def robots(request):
+    return render_to_response('blog/robots.txt', mimetype="text/plain")
 def getVisited(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
@@ -267,5 +269,5 @@ def getVisited(request, selected_page=1):
        returned_page = pages.page(selected_page)
     except EmptyPage:
        returned_page = pages.page(pages.num_pages)
-    return render_to_response('blog/popular.html',dict({'spisok_categ':categories_spisok(),'spisok_publ':archive(),'posts':returned_page.object_list,\
+    return render_to_response('blog/popular.html',dict({'spisok_categ':categories_spisok(),'htm_name':'popular','spisok_publ':archive(),'posts':returned_page.object_list,\
                               'page':returned_page,'views_count':True,'site': ssil.ssilka},**recent_polls(request)),context_instance = ssil.context)
