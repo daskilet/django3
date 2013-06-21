@@ -218,6 +218,7 @@ def getVisited(request, selected_page=1):
     client.ssl = True
     now = datetime.datetime.now()
     month=now.month
+    day=now.day
     month_minus_one = month-1
     if month_minus_one==0:
       month_minus_one=12
