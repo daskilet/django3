@@ -222,11 +222,13 @@ def getVisited(request, selected_page=1):
     month_minus_one = month-1
     if month_minus_one==0:
       month_minus_one=12
-    if month<10 and day<10:
+    if month<10:
       month = '0'+str(month)
-      day = '0'+str(now.day)
     else:
       month = str(month)
+    if day<10:
+      day = '0'+str(now.day)
+    else:
       day = str(now.day)
     if month_minus_one<10:
       month_minus_one = '0'+str(month_minus_one)
