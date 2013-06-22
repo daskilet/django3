@@ -71,10 +71,8 @@ ul#pageList li a {color: #547654;
 
 #div3_example {position: relative;
                float:left;
-}
-body.dark #footer {padding-bottom:100px;}
-	                      
-}
+}	                      
+
 #archive {position:absolute;
           float:left;
 	  margin-top:240px;
