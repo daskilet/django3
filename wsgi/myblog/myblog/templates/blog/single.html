@@ -8,7 +8,7 @@
         <h3>{{ post.created }}</h3>
         {{ post.body|safe }}
         <h3>By <a href="http://{{ site }}/{{ post.get_absolute_url }}profile">{{ post.author }}</a></h3>
-        <h3><a href="http://{{ site }}/category_list">Categories:</a> {% for category in post.categories.all %} <a href=http://{{ site }}/all_of_that_category/{{ category.title }}>{{ category.title }}</a> {% endfor %}</h3>
+        <h3><a href="http://{{ site }}/category_list">Categories:</a> {% for category in post.categories.all %} <a href=http://{{ site }}/all_of_that_category/{{ category.slug }}>{{ category.title }}</a> {% endfor %}</h3>
         {% disqus_show_comments %}
         {% endfor %}
         </div>
