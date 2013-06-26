@@ -214,7 +214,7 @@ def robots(request):
 def getVisited(request, selected_page=1):
     ssil = Dlya_saita(request)
     client = gdata.analytics.service.AnalyticsDataService()
-    client.ClientLogin("daskilet@mail.ru",GOOGLE_PASSWORD)
+    client.ClientLogin(GOOGLE_MAIL,GOOGLE_PASSWORD)
     client.ssl = True
     now = datetime.datetime.now()
     month=now.month
@@ -239,15 +239,13 @@ def getVisited(request, selected_page=1):
     month,day)) 
     dictionary={}
     for de in data.entry:
-      try:
+      try: 
          view, args, kwargs = resolve(str(de.pagePath))
+         print view,args,kwargs
          if view == getPost:
 	   try:
                 e = Post.objects.filter(slug = kwargs["postSlug"])[0]
-                if e not in dictionary:
-                   dictionary[e]=1
-                else:
-		  dictionary[e]+=1
+                dictionary[e]=int(str(de.pageviews))
            except IndexError:
 	     pass
       except Resolver404:
@@ -256,14 +254,14 @@ def getVisited(request, selected_page=1):
     i=0
     for element in sorted(dictionary.items(),key=lambda(k,v):v, reverse=True):
       if i<5:
-          posts.append([element[0],element[1]])
+          posts.append([element[0],str(element[1])])
           i+=1
       else:
 	break
     for unit in posts:
-      if unit[1]%10==1:
+      if unit[1][-1]=='1' and int(unit[1])!=11:
 	unit[1]=str(unit[1])+' просмотр'
-      elif unit[1]%10 in range(2,5):
+      elif unit[1][-1] in ('2','3','4') and int(unit[1])>=19:
 	unit[1]=str(unit[1])+' просмотра'
       else:
 	unit[1]=str(unit[1])+' просмотров'
