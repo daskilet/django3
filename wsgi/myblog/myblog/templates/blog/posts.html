@@ -5,11 +5,13 @@
         {% if posts %}
         {% for post in posts %}
         <div class="post">
-        <h1><a href="http://{{ site }}/{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-        {{ post.short_body|safe }}
+        <h1><a href="http://{{ site }}/{{ post.0.get_absolute_url }}">{{ post.0.title }}</a></h1>
+        {{ post.0.short_body|safe }}
         <br />
-        <a href="{{ post.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a>
-         {% disqus_num_replies %}
+        <a href="{{ post.0.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ post.0.id }}">View Comments</a>
+         {% disqus_num_replies %}<br />
+         {{post.1}} в главной новости <span style="float:right;">{{post.0.created}}</span>
+
         </div>
         {% endfor %}
         <br />

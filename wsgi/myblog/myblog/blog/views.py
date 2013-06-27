@@ -18,6 +18,19 @@ import gdata.analytics.service
 from myblog.true_settings import *
 from myblog.blog.forms import FeedbackForm
 
+def dlya_kolichestva_slov(spisok_postov):
+  kol_slov = [str(len(post.body.split(' '))) for post in spisok_postov]
+  for element in kol_slov:
+      if element[-1]=='1' and element!='11':
+	kol_slov[kol_slov.index(element)]+=' слово'
+      elif element[-1] in ('5','6','7','8','9'):
+        kol_slov[kol_slov.index(element)]+=' слов'
+      elif element in ('4','5','3'):
+	kol_slov[kol_slov.index(element)]+=' слова'
+      else:
+	kol_slov[kol_slov.index(element)]+=' слова'
+  spisok_postov = zip(spisok_postov,kol_slov)
+  return spisok_postov
 def show_feedback_form(request):
     ssil = Dlya_saita(request)
     # Обработка POST запроса
@@ -95,8 +108,8 @@ def getPosts(request,selected_page=1,auth=None,monthSlug=None):
       posts = Post.objects.filter(created__month=monthSlug).order_by('created')
     else:
        posts = Post.objects.all().order_by('created')
-
     # Add pagination
+    posts = dlya_kolichestva_slov(posts)
     pages = Paginator(posts, 5)
     try:
        returned_page = pages.page(selected_page)
@@ -177,6 +190,7 @@ def search(request):
 	for r in results:
 		posts.append(r.object)
         posts = [element for element in posts if element]
+        posts = dlya_kolichestva_slov(posts)
 	#videos list contains all the videos those match the search criteria
 	return render_to_response('blog/poisk_rezult.html',dict({'spisok_categ':categories_spisok(),'htm_name':'poisk_rezult','spisok_publ':archive(),'text':posts,'site': ssil.ssilka},\
                                   **recent_polls(request)),context_instance=ssil.context)
@@ -241,7 +255,6 @@ def getVisited(request, selected_page=1):
     for de in data.entry:
       try: 
          view, args, kwargs = resolve(str(de.pagePath))
-         print view,args,kwargs
          if view == getPost:
 	   try:
                 e = Post.objects.filter(slug = kwargs["postSlug"])[0]
