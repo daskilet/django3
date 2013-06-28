@@ -18,9 +18,10 @@ import gdata.analytics.service
 from myblog.true_settings import *
 from myblog.blog.forms import FeedbackForm
 
-def dlya_kolichestva_slov(spisok_postov):
-  kol_slov = [str(len(post.body.split(' '))) for post in spisok_postov]
-  for element in kol_slov:
+def dlya_kolichestva_slov(spisok_postov,popular=False):
+  if not popular:
+     kol_slov = [str(len(post.body.split(' '))) for post in spisok_postov]
+     for element in kol_slov:
       if element[-1]=='1' and element!='11':
 	kol_slov[kol_slov.index(element)]+=' слово'
       elif element[-1] in ('5','6','7','8','9'):
@@ -29,7 +30,21 @@ def dlya_kolichestva_slov(spisok_postov):
 	kol_slov[kol_slov.index(element)]+=' слова'
       else:
 	kol_slov[kol_slov.index(element)]+=' слова'
-  spisok_postov = zip(spisok_postov,kol_slov)
+     spisok_postov = zip(spisok_postov,kol_slov)
+  else:
+    posti = [post[0] for post in spisok_postov]
+    kol_slov = [str(len(post.body.split(' '))) for post in posti]
+    i=0
+    for element in kol_slov:
+      if element[-1]=='1' and element!='11':
+	spisok_postov[i].append(kol_slov[kol_slov.index(element)]+' слово')
+      elif element[-1] in ('5','6','7','8','9'):
+        spisok_postov[i].append(kol_slov[kol_slov.index(element)]+' слов')
+      elif element in ('4','5','3'):
+	spisok_postov[i].append(kol_slov[kol_slov.index(element)]+' слова')
+      else:
+	spisok_postov[i].append(kol_slov[kol_slov.index(element)]+' слова')
+      i+=1
   return spisok_postov
 def show_feedback_form(request):
     ssil = Dlya_saita(request)
@@ -279,6 +294,7 @@ def getVisited(request, selected_page=1):
       else:
 	unit[1]=str(unit[1])+' просмотров'
     pages = Paginator(posts, 5)
+    posts = dlya_kolichestva_slov(posts,True)
     try:
        returned_page = pages.page(selected_page)
     except EmptyPage:
